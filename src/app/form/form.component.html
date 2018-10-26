@@ -1,0 +1,81 @@
+<div class="text-center mb-2">Create New Programme
+</div>
+<div class="d-flex container justify-content-center align-items-center p-2 border shadow w-50 h-100">
+
+    <form [formGroup]="dform">
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
+        <div class=" flex-column col-12 w-100  small mb-2">
+            <label class="w-100 ">
+                Change Reference
+                <input class="form-control h-50 w-100 " type="text" formControlName="change_ref" required>
+            </label>
+            <label class="w-100 ">
+                Title
+                <input class="form-control w-100 mt-1" type="text" formControlName="title" required>
+            </label>
+            <label class="w-100 ">
+                SAP Codes
+                <input class="form-control w-100 mt-1" type="text">
+            </label>
+            <label class="w-100 ">
+                Project / Programme Pitch
+                <textarea class="form-control w-100 mt-1" placeholder="Enter your text.." rows="2"></textarea>
+            </label>
+            <div class="d-flex flex-row ">
+                <div class="flex-column p-0 pr-4 col-6">
+                    <label class="w-100 ">
+                        Change Owner
+                        <input class="form-control w-100 mt-1" type="text" formControlName="change_own" required>
+                    </label>
+                </div>
+                <div class="flex-column p-0  col-6">
+                    <label class="w-100 ">
+                        Cost (Estimate)
+                        <input class="form-control w-100  mt-1" type="text">
+                    </label>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row ">
+                <div class="flex-column p-0 pr-4 col-6">
+                    <label class="w-100 ">
+                        Start Date
+                        <input class="form-control  w-100  mt-1" type="text" formControlName="startdate" required>
+
+                    </label>
+                </div>
+                <div class="flex-column p-0 col-6">
+                    <label class="w-100 ">
+                        Estimated End Date
+                        <input class="form-control w-100  mt-1" type="text">
+                    </label>
+                </div>
+            </div><label class="w-100 ">
+                Financial Benefits</label>
+            <div class="d-flex flex-row p-0">
+
+                <label class="flex-column col-5 w-100 p-0">
+                    Description</label>
+                <label class="flex-column col-3 w-100 p-0">
+                    Benefit Value</label>
+                <label class="flex-column col-2 w-100 p-0">
+                    Status</label>
+            </div>
+            <div formArrayName="financial_benifits">
+                <div *ngFor="let item of FinancialBenifits.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                    <div class="d-flex flex-row  ">
+                        <input class="form-control  flex-column col-5 w-100  mr-1 mt-1" type="text">
+                        <input class="form-control flex-column col-3 w-100  mr-1 mt-1" type="text">
+                        <input class="form-control flex-column col-2 w-100  mr-1 mt-1" type="text">
+                        <div (click)="deleteFinancialBenifit(pointIndex)" class="text-center col-2"><i class="flex-column col-2 fa fa-trash"
+                                aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div (click)="addFinancialBenifit()" class="mb-3 mt-2"><i class="fa fa-plus mr-1"></i>
+                    Add Benefit</div>
+            </div>
+            <button (click)="goToCreate()" class="btn float-right text-white">+Create</button>
+        </div>
+    </form>
+
+</div>
