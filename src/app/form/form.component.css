@@ -2,5 +2,8 @@
   background: #6f00c5;
 }
 .form-control{
-  height: 50%;
+  height: calc(2.0rem + 2px);
+}
+.form-group{
+  margin-bottom: 0.40rem;
 }

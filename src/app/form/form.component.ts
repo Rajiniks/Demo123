@@ -21,14 +21,16 @@ export class FormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   private myDatePickerOptions: IMyOptions = {
-    dateFormat: "dd.mm.yyyy"
+    dateFormat: "dd/mm/yyyy"
   };
+
   ngOnInit() {
     this.dform = this.fb.group({
       change_ref: ["", Validators.required],
       title: ["", Validators.required],
       change_own: ["", Validators.required],
       startdate: ["", Validators.required],
+      enddate: ["", Validators.required],
       financial_benifits: this.fb.array([this.fb.group({ point: "" })])
     });
   }
@@ -41,6 +43,9 @@ export class FormComponent implements OnInit {
 
   deleteFinancialBenifit(index) {
     this.FinancialBenifits.removeAt(index);
+  }
+  onSubmit() {
+    console.log(this.dform.value);
   }
   goToCreate() {
     if (this.dform.untouched || this.dform.invalid) {
